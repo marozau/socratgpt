@@ -293,6 +293,13 @@ def main() -> None:
             user_question = get_user_question(rep)
             agent_question = get_agent_question(rep)
 
+            if agent_question:
+                agent_msg = st.session_state.agent.run(agent_question)
+                st.session_state.socrates.add_agent_feedback(agent_question, agent_msg)
+                st.session_state.theaetetus.add_agent_feedback(agent_question, agent_msg)
+                st.session_state.plato.add_agent_feedback(agent_question, agent_msg)
+                add_message('agent', agent_msg)
+
             if user_question:
                 st.session_state.user_question = user_question
                 add_message('system', 'User feedback required...')
@@ -302,13 +309,6 @@ def main() -> None:
                 st.session_state.user_question = f"Is that correct answer? - {answer}"
                 add_message('system', 'User feedback required...')
                 st.experimental_rerun()
-
-            if agent_question:
-                agent_msg = st.session_state.agent.run(agent_question)
-                st.session_state.socrates.add_agent_feedback(agent_question, agent_msg)
-                st.session_state.theaetetus.add_agent_feedback(agent_question, agent_msg)
-                st.session_state.plato.add_agent_feedback(agent_question, agent_msg)
-                add_message('agent', agent_msg)
 
             if user_question is None and agent_question is None:
                 pr = st.session_state.plato.get_proofread()

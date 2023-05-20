@@ -1,3 +1,5 @@
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://marozau-socratgpt-app-fnkt0e.streamlit.app/)
+
 # SocratGPT
 
 SocratGPT is an application that utilizes OpenAI's GPT model to simulate a Socratic dialogue. Inspired by the SocraticAI project by Princeton NLP, it aims to facilitate an interactive learning environment where the user can explore complex questions through an engaging, back-and-forth conversation.
